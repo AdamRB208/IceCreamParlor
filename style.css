@@ -1,0 +1,9 @@
+body {
+  background-color: #DAAD6A;
+}
+
+.item-card {
+  height: 35vh;
+  object-fit: cover;
+  object-position: bottom;
+}
