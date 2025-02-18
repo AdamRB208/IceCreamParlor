@@ -94,12 +94,13 @@ function addBowlToCart() {
 
 function cartTotal() {
   let total = 0
+
   for (let i = 0; i < menuItems.length; i++) {
     const menuItem = menuItems[i];
-    total += menuItem.price * menuItem.quantity
+    const result = menuItem.quantity * menuItem.price
+    total += result
   }
 
   return total
-
 }
 
