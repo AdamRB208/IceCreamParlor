@@ -104,3 +104,45 @@ function cartTotal() {
   return total
 }
 
+function checkout() {
+  const cartTotal = calculateCartTotal()
+
+  if (cartTotal == 0) {
+    window.alert("your cart is empty")
+    return
+  }
+
+  window.alert(`Thank you! Your total was $${cartTotal.toFixed(2)}!`)
+
+  clearCart()
+  drawCart()
+  drawCartTotal()
+}
+
+function clearCart() {
+  for (let i = 0; i < menuItems.length; i++) {
+    const menuItem = menuItems[i]
+    menuItem.quantity = 0
+  }
+}
+
+function drawCart() {
+  let menuListItems = ''
+
+  for (let i = 0; i < menuItems.length; i++) {
+    const menuItem = menuItems[i]
+    if (menuItem.quantity > 0) {
+      menuListItems += `<li>${menuItem.name} Qty: ${menuItem.quantity} $${menuItem.Item.quantity * menuItem.price}</li>`
+    }
+  }
+
+  const cartListElement = document.getElementById('cartList')
+  cartListElement.interHTML = menuListItems
+}
+
+function drawCartTotal() {
+  const cartTotalElement = document.getElementById('cartTotal')
+  const cartTotal = calculateCartTotal()
+  cartTotalElement.innerText = cartTotal.toFixed(2)
+}
+
